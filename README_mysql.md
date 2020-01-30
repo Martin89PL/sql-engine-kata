@@ -33,10 +33,10 @@ Przykład:
 ```
 CREATE TABLE dojoers (
   id INTEGER,
-  first_name STRING,
-  last_name STRING,
-  unit_tests_written NUMBER,
-  code_coverage NUMBER,
+  first_name VARCHAR(255),
+  last_name VARCHAR(255),
+  unit_tests_written INTEGER,
+  code_coverage FLOAT,
   photos_agreed BOOLEAN,
   last_dojo_date DATE
 )
