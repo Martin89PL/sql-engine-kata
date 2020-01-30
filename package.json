@@ -1,0 +1,32 @@
+{
+  "name": "javascript-sql-engine-kata",
+  "version": "0.0.1",
+  "description": "Coding Dojo SQL Kata ====================",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest test/ --collectCoverage",
+    "start": "node -r esm src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/CodingDojoSilesia/javascript-sql-engine-kata.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/CodingDojoSilesia/javascript-sql-engine-kata/issues"
+  },
+  "homepage": "https://gitlab.com/CodingDojoSilesia/javascript-sql-engine-kata#readme",
+  "devDependencies": {
+    "babel-jest": "^25.1.0",
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/node": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "eslint": "^6.8.0",
+    "jest": "^25.1.0"
+  },
+  "dependencies": {
+    "esm": "^3.2.25"
+  }
+}
