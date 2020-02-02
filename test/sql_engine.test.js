@@ -33,5 +33,11 @@ describe('SqlEngine', () => {
             }).toThrow(Error);
         })
 
+        test('return correct message when throw error when not recognize command', () => {
+            expect(() => {
+                instance.checkCommand('TEST')
+            }).toThrow('Unsupported command!');
+        })
+
     });
 });

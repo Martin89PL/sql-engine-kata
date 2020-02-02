@@ -9,10 +9,16 @@ export default class SqlEngine {
         this.CommandFactory = new CommandFactory();
     }
 
-    handleQuery(queryString) {        
-        const Command = this.checkCommand(queryString);
-        Command.setDatabase(this.database);
-        Command.execute();
+    handleQuery(queryString) {
+        
+        try {
+            const Command = this.checkCommand(queryString);
+            Command.setDatabase(this.database);
+            Command.execute();
+        } catch (e) {
+            console.log(e.message)
+        }
+        
     }
 
     normalizeQuery(queryString) {

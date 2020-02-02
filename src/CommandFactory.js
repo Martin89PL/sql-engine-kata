@@ -5,6 +5,6 @@ export default class CommandFactory {
         if(/CREATE/g.test(input)) {
             return new CreateCommand(input);
         }
-        throw new Error('unsupported command!');
+        throw new Error('Unsupported command!');
     }
 }
