@@ -21,23 +21,5 @@ describe('SqlEngine', () => {
            
             expect(instance.normalizeQuery(TEST_QUERY)).toEqual(EXPECTED);
         });
-
-        test('recognize CREATE COMMAND', () => {
-            const command = 'CREATE TABLE';
-            expect(instance.checkCommand(command) instanceof CreateTableCommand).toEqual(true);
-        })
-
-        test('throw error when not recognize command', () => {
-            expect(() => {
-                instance.checkCommand('TEST')
-            }).toThrow(Error);
-        })
-
-        test('return correct message when throw error when not recognize command', () => {
-            expect(() => {
-                instance.checkCommand('TEST')
-            }).toThrow('Unsupported command!');
-        })
-
     });
 });
