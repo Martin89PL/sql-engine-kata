@@ -1,19 +1,18 @@
 'use strict';
 
-import CommandResolver from './CommandResolver';
+import CommandFactory from './CommandFactory';
 
 export default class SqlEngine {
 
     constructor() {
         this.database = [];
-        this.commandResolver = new CommandResolver();
+        this.CommandFactory = new CommandFactory();
     }
 
     handleQuery(queryString) {        
         const Command = this.checkCommand(queryString);
         Command.setDatabase(this.database);
         Command.execute();
-        console.log(this.database);
     }
 
     normalizeQuery(queryString) {
@@ -36,6 +35,6 @@ export default class SqlEngine {
     }
 
     checkCommand(input) {
-        return this.commandResolver.resolve(input);
+        return this.CommandFactory.create(input);
     }
 }
