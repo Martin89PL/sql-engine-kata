@@ -1,4 +1,4 @@
-export default class CreateCommand {
+export default class CreateTableCommand {
     constructor(input) {
         this.input = input;
     }

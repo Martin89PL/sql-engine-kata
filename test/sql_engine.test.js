@@ -1,5 +1,5 @@
 import SqlEngine from "../src/sql_engine";
-import CreateCommand from "../src/Command/CreateCommand";
+import CreateTableCommand from "../src/Command/CreateTableCommand";
 
 describe('SqlEngine', () => {
     let instance = null;
@@ -24,7 +24,7 @@ describe('SqlEngine', () => {
 
         test('recognize CREATE COMMAND', () => {
             const command = 'CREATE TABLE';
-            expect(instance.checkCommand(command) instanceof CreateCommand).toEqual(true);
+            expect(instance.checkCommand(command) instanceof CreateTableCommand).toEqual(true);
         })
 
         test('throw error when not recognize command', () => {
