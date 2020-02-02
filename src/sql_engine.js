@@ -1,6 +1,6 @@
 'use strict';
 
-import CommandFactory from './CommandFactory';
+import CommandFactory from './Factory/CommandFactory';
 
 export default class SqlEngine {
 

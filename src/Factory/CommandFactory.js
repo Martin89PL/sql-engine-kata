@@ -1,4 +1,4 @@
-import CreateCommand from './CreateCommand';
+import CreateCommand from '../Command/CreateCommand';
 
 export default class CommandFactory {
     create (input) {

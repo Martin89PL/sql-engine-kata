@@ -1,5 +1,5 @@
 import SqlEngine from "../src/sql_engine";
-import CreateCommand from "../src/CreateCommand";
+import CreateCommand from "../src/Command/CreateCommand";
 
 describe('SqlEngine', () => {
     let instance = null;
