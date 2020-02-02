@@ -28,8 +28,9 @@ describe('SqlEngine', () => {
         })
 
         test('throw error when not recognize command', () => {
-            const command = 'TEST';
-            expect(instance.checkCommand(command)).toThrow();
+            expect(() => {
+                instance.checkCommand('TEST')
+            }).toThrow(Error);
         })
 
     });
