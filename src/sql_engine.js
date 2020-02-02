@@ -1,16 +1,19 @@
 'use strict';
 
-export default class SqlEngine {
-    handleQuery(queryString) {        
-      /**
-        * This is a good place to start implementing your solution
-        * Good luck!
-        * 
-        * Remember to ask anything mentors if anything is unclear or if you need help
-        * there are no stupid questions, we are here you you <3
-        */
+import CommandResolver from './CommandResolver';
 
-        console.log(this.normalizeQuery(queryString));
+export default class SqlEngine {
+
+    constructor() {
+        this.database = [];
+        this.commandResolver = new CommandResolver();
+    }
+
+    handleQuery(queryString) {        
+        const Command = this.checkCommand(queryString);
+        Command.setDatabase(this.database);
+        Command.execute();
+        console.log(this.database);
     }
 
     normalizeQuery(queryString) {
@@ -30,5 +33,9 @@ export default class SqlEngine {
             resultString = resultString.replace('$', match);
         }
         return resultString;
+    }
+
+    checkCommand(input) {
+        return this.commandResolver.resolve(input);
     }
 }
