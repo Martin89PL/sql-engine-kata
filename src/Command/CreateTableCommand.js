@@ -19,7 +19,7 @@ export default class CreateTableCommand {
         const fields = this.getFields();
         const schema = new Schema();
         fields.forEach((e) => {
-            let typeAndValue = e.split(/\s+/g);
+            let typeAndValue = e.split(/\s+/g); // @TODO filter types
             schema.set(typeAndValue[0], typeAndValue[1]);
         });
         return schema;

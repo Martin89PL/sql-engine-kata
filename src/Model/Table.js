@@ -1,5 +1,10 @@
 export default class Table {
-    constructor() {
-
+    /**
+     * @param {string} name 
+     * @param {Schema} schema 
+     */
+    constructor(name, schema) {
+        this.name = name;
+        this.schema = schema;
     }
 }
