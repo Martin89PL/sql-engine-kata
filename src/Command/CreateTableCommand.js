@@ -1,15 +1,32 @@
+import Table from '../Model/Table';
+import Schema from '../Model/Schema';
+
 export default class CreateTableCommand {
     constructor(input) {
         this.input = input;
     }
 
-    setDatabase(database){
-        this.database = database;
+    execute() {
+        const tableName = this.getTableName();
+        const tableSchema = this.createTableSchema();
+
+        const table = this.createTable(tableName, tableSchema);
+
+        this.database.push(table);
     }
 
-    execute() {
+    createTableSchema() {
         const fields = this.getFields();
-        this.database.push(this.getTableName());
+        const schema = new Schema();
+        fields.forEach((e) => {
+            let typeAndValue = e.split(/\s+/g);
+            schema.set(typeAndValue[0], typeAndValue[1]);
+        });
+        return schema;
+    }
+
+    createTable(tableName, Schema) {
+        return new Table(tableName, Schema);
     }
 
     getTableName() {
@@ -17,6 +34,13 @@ export default class CreateTableCommand {
     }
 
     getFields() {
-        return /(?<=\()(.*?)(?=\))/.exec(this.input);
+        const fields = /(?<=\()(.*?)(?=\))/.exec(this.input);
+        const parsed = fields[0].split(',');
+        return parsed;
+    }
+
+    setDatabase(database){
+        this.database = database;
+        return this;
     }
 }
