@@ -10,15 +10,11 @@ export default class SqlEngine {
     }
 
     handleQuery(queryString) {
-        
         try {
-            const Command = this.checkCommand(queryString);
-            Command.setDatabase(this.database);
-            Command.execute();
+            this.executeCommand(queryString);
         } catch (e) {
-            console.log(e.message)
+            this.displayError(e)
         }
-        
     }
 
     normalizeQuery(queryString) {
@@ -42,5 +38,20 @@ export default class SqlEngine {
 
     checkCommand(input) {
         return this.CommandFactory.create(input);
+    }
+
+    executeCommand(queryString) {
+        this.checkCommand(queryString)
+        .setDatabase(this.database)
+        .execute();
+    }
+
+    /**
+     * @param {Error} error 
+     */
+    displayError(error) {
+        console.log('-'.repeat(40))
+        console.log(`Error in database engine: ${error.message}`)
+        console.log('-'.repeat(40))
     }
 }
