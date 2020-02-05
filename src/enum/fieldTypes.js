@@ -1,4 +1,4 @@
-export default ValueTypes = Object.freeze({
+export default Object.freeze({
     INTEGER: 'INTEGER',
     STRING: 'STRING',
     NUMBER: 'NUMBER',
