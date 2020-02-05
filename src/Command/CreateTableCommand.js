@@ -17,17 +17,17 @@ export default class CreateTableCommand {
     createTableSchema() {
         const fields = this.getFields();
         const schema = new Schema();
-        fields.forEach((e) => {
-            let typeAndValue = e.split(/\s+/g); // @TODO filter types
-            schema.set(typeAndValue[0], typeAndValue[1]);
+        fields.forEach((element) => {
+            const parsed = this.parseTypeAndValue(element)
+            schema.set(parsed.name, parsed.type);
         });
         return schema;
     }
 
     parseTypeAndValue(input) {
-        const [value, type] = input.split(/\s+/g);
+        const [name, type] = input.split(/\s+/g);
         if(FieldType.valid(type)) {
-            return {value, type} 
+            return {name, type} 
         }
         throw new Error('Invalid field type!');
     }
