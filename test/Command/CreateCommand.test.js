@@ -34,4 +34,9 @@ describe('#CommandTableCommand', () => {
         expect(schema.get('photos_agreed')).toEqual('BOOLEAN');
         expect(schema.get('last_dojo_date')).toEqual('DATE');
     });
+
+    test('get type and value from input', () => {
+        const instance = new CreateTableCommand('CREATE TABLE dojers (id INTEGER)');
+        expect((instance.parseTypeAndValue('id INTEGER')) instanceof Object).toBe(true);
+    });
 });

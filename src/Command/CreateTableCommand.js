@@ -1,5 +1,6 @@
 import Table from '../Model/Table';
 import Schema from '../Model/Schema';
+import ValueTypes from '../enum/fieldTypes';
 
 export default class CreateTableCommand {
     constructor(input) {
@@ -9,10 +10,8 @@ export default class CreateTableCommand {
     execute() {
         const tableName = this.getTableName();
         const tableSchema = this.createTableSchema();
-
         const table = this.createTable(tableName, tableSchema);
-
-        this.database.push(table);
+        this.database.set(tableName, table);
     }
 
     createTableSchema() {
@@ -23,6 +22,14 @@ export default class CreateTableCommand {
             schema.set(typeAndValue[0], typeAndValue[1]);
         });
         return schema;
+    }
+
+    parseTypeAndValue(input) {
+        const [value, type] = input.split(/\s+/g);
+        if(Object.values(ValueTypes).includes(type)) {
+            return {value, type} 
+        }
+        throw new Error('Invalid field type!');
     }
 
     createTable(tableName, Schema) {

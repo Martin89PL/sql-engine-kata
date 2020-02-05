@@ -1,3 +1,3 @@
-export default class Db {
+export default class Db extends Map {
     
 }

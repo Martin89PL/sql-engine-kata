@@ -6,5 +6,6 @@ export default class Table {
     constructor(name, schema) {
         this.name = name;
         this.schema = schema;
+        this.rows = new Map();
     }
 }
