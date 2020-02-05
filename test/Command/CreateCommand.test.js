@@ -39,4 +39,11 @@ describe('#CommandTableCommand', () => {
         const instance = new CreateTableCommand('CREATE TABLE dojers (id INTEGER)');
         expect((instance.parseTypeAndValue('id INTEGER')) instanceof Object).toBe(true);
     });
+
+    test('throw error when type is invalid', () => {
+        expect(() => {
+            const instance = new CreateTableCommand('CREATE TABLE dojers (id INTEGER)');
+            instance.parseTypeAndValue('id INVALID')
+        }).toThrow('Invalid field type!');
+    })
 });
