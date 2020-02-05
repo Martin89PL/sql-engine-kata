@@ -1,6 +1,6 @@
 import Table from '../Model/Table';
 import Schema from '../Model/Schema';
-import ValueTypes from '../enum/fieldTypes';
+import FieldType from '../validator/fieldType';
 
 export default class CreateTableCommand {
     constructor(input) {
@@ -26,7 +26,7 @@ export default class CreateTableCommand {
 
     parseTypeAndValue(input) {
         const [value, type] = input.split(/\s+/g);
-        if(Object.values(ValueTypes).includes(type)) {
+        if(FieldType.valid(type)) {
             return {value, type} 
         }
         throw new Error('Invalid field type!');
