@@ -1,11 +1,12 @@
 'use strict';
 
 import CommandFactory from './Factory/CommandFactory';
+import Db from './Model/Db';
 
 export default class SqlEngine {
 
     constructor() {
-        this.database = [];
+        this.database = new Db();
         this.CommandFactory = new CommandFactory();
     }
 
