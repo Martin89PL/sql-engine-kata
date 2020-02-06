@@ -1,5 +1,6 @@
 import CommandFactory from "../../src/Factory/CommandFactory";
 import CreateTableCommand from "../../src/Command/CreateTableCommand";
+import ShowCreateTable from '../../src/Command/showTableCommand';
 
 describe('#CommandFactory', () => {
     let instance = null;
@@ -7,8 +8,12 @@ describe('#CommandFactory', () => {
         instance = new CommandFactory();
     });
 
-    test('recognize CREATE COMMAND', () => {
+    test('recognize CREATE TABLE COMMAND', () => {
         expect(instance.create('CREATE TABLE') instanceof CreateTableCommand).toEqual(true);
+    })
+
+    test('recognize SHOW CREATE TABLE COMMAND', () => {
+        expect(instance.create('SHOW CREATE TABLE') instanceof ShowCreateTable).toEqual(true);
     })
 
     test('throw error when not recognize command', () => {
