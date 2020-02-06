@@ -1,5 +1,5 @@
 import CreateTableCommand from '../Command/CreateTableCommand';
-import ShowCreateTable from '../Command/showTableCommand';
+import ShowCreateTable from '../Command/ShowTableCommand';
 
 export default class CommandFactory {
     create (input) {

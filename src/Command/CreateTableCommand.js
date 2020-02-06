@@ -1,6 +1,6 @@
 import Table from '../Model/Table';
 import Schema from '../Model/Schema';
-import FieldType from '../validator/fieldType';
+import FieldType from '../Validator/FieldType';
 
 export default class CreateTableCommand {
     constructor(input) {
@@ -8,10 +8,20 @@ export default class CreateTableCommand {
     }
 
     execute() {
-        const tableName = this.getTableName();
-        const tableSchema = this.createTableSchema();
-        const table = this.createTable(tableName, tableSchema);
-        this.database.set(tableName, table);
+        try {
+            const tableName = this.getTableName();
+            const tableSchema = this.createTableSchema();
+            const table = this.createTable(tableName, tableSchema);
+            this.database.set(tableName, table);
+        } catch (e) {
+            throw new Error(`Error when creating table`);
+        }
+        this.consoleOutput()
+        return true;
+    }
+
+    consoleOutput() {
+        console.log(`Query OK, 0 rows affected`);
     }
 
     createTableSchema() {
@@ -25,11 +35,11 @@ export default class CreateTableCommand {
     }
 
     parseTypeAndValue(input) {
-        const [name, type] = input.split(/\s+/g);
+        const [name, type] = input.trim().split(/\s+/g);
         if(FieldType.valid(type)) {
             return {name, type} 
         }
-        throw new Error('Invalid field type!');
+        throw new Error(`Invalid field type! ${type}`);
     }
 
     createTable(tableName, Schema) {

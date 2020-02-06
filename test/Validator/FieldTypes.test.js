@@ -1,4 +1,4 @@
-import FieldTypes from '../../src/validator/fieldType';
+import FieldTypes from '../../src/validator/FieldType';
 
 describe('#fieldTypes validator', () => {
     test('valid field type', () => {

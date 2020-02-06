@@ -1,6 +1,6 @@
 import CommandFactory from "../../src/Factory/CommandFactory";
 import CreateTableCommand from "../../src/Command/CreateTableCommand";
-import ShowCreateTable from '../../src/Command/showTableCommand';
+import ShowCreateTable from '../../src/Command/ShowTableCommand';
 
 describe('#CommandFactory', () => {
     let instance = null;
